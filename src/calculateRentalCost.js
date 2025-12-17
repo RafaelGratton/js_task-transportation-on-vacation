@@ -4,12 +4,20 @@
  * @return {number}
  */
 function calculateRentalCost(days) {
-  let totalCost = days * 40;
+  const DAILY_RATE = 40;
+  const DISCOUNT_7_DAYS_THRESHOLD = 7;
+  const DISCOUNT_7_DAYS_AMOUNT = 50;
+  const DISCOUNT_3_DAYS_THRESHOLD = 3;
+  const DISCOUNT_3_DAYS_AMOUNT = 20;
 
-  if (days >= 7) {
-    totalCost -= 50; // Desconto de $50 para 7 ou mais dias
-  } else if (days >= 3) {
-    totalCost -= 20; // Desconto de $20 para 3 ou mais dias
+  const totalCost = days * DAILY_RATE;
+
+  if (days >= DISCOUNT_7_DAYS_THRESHOLD) {
+    return totalCost - DISCOUNT_7_DAYS_AMOUNT;
+  }
+
+  if (days >= DISCOUNT_3_DAYS_THRESHOLD) {
+    return totalCost - DISCOUNT_3_DAYS_AMOUNT;
   }
 
   return totalCost;
